@@ -3,7 +3,7 @@ package io.tebex.plugin.command.sub;
 import dev.dejvokep.boostedyaml.YamlDocument;
 import io.tebex.plugin.TebexPlugin;
 import io.tebex.plugin.command.SubCommand;
-import io.tebex.plugin.gui.BuyGUI;
+
 import org.bukkit.command.CommandSender;
 
 import java.io.IOException;
@@ -20,7 +20,6 @@ public class ReloadCommand extends SubCommand {
             YamlDocument configYaml = platform.initPlatformConfig();
             platform.loadServerPlatformConfig(configYaml);
             platform.reloadConfig();
-            platform.setBuyGUI(new BuyGUI(platform));
             platform.refreshListings();
 
             sender.sendMessage("§8[Tebex] §7Successfully reloaded.");

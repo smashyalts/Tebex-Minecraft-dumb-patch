@@ -9,15 +9,13 @@ public class SubCategory implements ICategory {
     private final int id;
     private final int order;
     private final String name;
-    private final String guiItem;
     private final Category parentCategory;
     private final List<CategoryPackage> categoryPackages;
 
-    public SubCategory(int id, int order, String name, String guiItem, Category parentCategory, List<CategoryPackage> categoryPackages) {
+    public SubCategory(int id, int order, String name, Category parentCategory, List<CategoryPackage> categoryPackages) {
         this.id = id;
         this.order = order;
         this.name = name;
-        this.guiItem = guiItem;
         this.parentCategory = parentCategory;
         this.categoryPackages = categoryPackages;
     }
@@ -37,10 +35,6 @@ public class SubCategory implements ICategory {
         return name;
     }
 
-    @Override
-    public String getGuiItem() {
-        return guiItem;
-    }
 
     public Category getParent() {
         return parentCategory;
@@ -55,7 +49,6 @@ public class SubCategory implements ICategory {
                 jsonObject.get("id").getAsInt(),
                 jsonObject.get("order").getAsInt(),
                 jsonObject.get("name").getAsString(),
-                jsonObject.get("gui_item").getAsString(),
                 category,
                 jsonObject.getAsJsonArray("packages").asList().stream().map(item -> CategoryPackage.fromJsonObject(item.getAsJsonObject())).collect(Collectors.toList())
         );

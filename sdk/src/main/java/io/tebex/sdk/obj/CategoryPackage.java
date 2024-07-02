@@ -8,16 +8,14 @@ public class CategoryPackage {
     private final String name;
     private final double price;
     private final String image;
-    private final String itemId;
     private final Sale sale;
 
-    public CategoryPackage(int id, int order, String name, double price, String image, String itemId, Sale sale) {
+    public CategoryPackage(int id, int order, String name, double price, String image, Sale sale) {
         this.id = id;
         this.order = order;
         this.name = name;
         this.price = price;
         this.image = image;
-        this.itemId = itemId;
         this.sale = sale;
     }
 
@@ -41,9 +39,6 @@ public class CategoryPackage {
         return image;
     }
 
-    public String getGuiItem() {
-        return itemId;
-    }
 
     public Sale getSale() {
         return sale;
@@ -88,7 +83,6 @@ public class CategoryPackage {
                 jsonObject.get("name").getAsString(),
                 jsonObject.get("price").getAsDouble(),
                 jsonObject.get("image").getAsString(),
-                jsonObject.get("gui_item").getAsString(),
                 new Sale(sale.get("active").getAsBoolean(), sale.get("discount").getAsDouble())
         );
     }
@@ -101,7 +95,6 @@ public class CategoryPackage {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", image='" + image + '\'' +
-                ", itemId=" + itemId +
                 ", sale=" + sale +
                 '}';
     }

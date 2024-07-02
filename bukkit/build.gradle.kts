@@ -7,7 +7,6 @@ dependencies {
     implementation(project(":sdk"))
     implementation("it.unimi.dsi:fastutil:8.5.6")
     implementation("com.github.cryptomorin:XSeries:9.3.1") { isTransitive = false }
-    implementation("dev.triumphteam:triumph-gui:3.1.2")
 
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     compileOnly("dev.dejvokep:boosted-yaml:1.3")

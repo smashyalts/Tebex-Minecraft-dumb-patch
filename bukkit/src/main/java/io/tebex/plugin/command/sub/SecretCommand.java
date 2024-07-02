@@ -3,7 +3,6 @@ package io.tebex.plugin.command.sub;
 import dev.dejvokep.boostedyaml.YamlDocument;
 import io.tebex.plugin.TebexPlugin;
 import io.tebex.plugin.command.SubCommand;
-import io.tebex.plugin.gui.BuyGUI;
 import io.tebex.sdk.SDK;
 import io.tebex.sdk.exception.ServerNotFoundException;
 import io.tebex.sdk.platform.config.ServerPlatformConfig;
@@ -45,7 +44,6 @@ public class SecretCommand extends SubCommand {
 
             platform.loadServerPlatformConfig(configFile);
             platform.reloadConfig();
-            platform.setBuyGUI(new BuyGUI(platform));
             platform.refreshListings();
             platform.configure();
 

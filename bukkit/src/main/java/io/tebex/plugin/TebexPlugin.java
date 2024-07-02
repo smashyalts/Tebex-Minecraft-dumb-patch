@@ -3,9 +3,7 @@ package io.tebex.plugin;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import dev.dejvokep.boostedyaml.YamlDocument;
-import io.tebex.plugin.command.BuyCommand;
 import io.tebex.plugin.event.JoinListener;
-import io.tebex.plugin.gui.BuyGUI;
 import io.tebex.plugin.manager.CommandManager;
 import io.tebex.plugin.placeholder.BukkitNamePlaceholder;
 import io.tebex.sdk.SDK;
@@ -54,7 +52,6 @@ public final class TebexPlugin extends JavaPlugin implements Platform {
     private ServerInformation storeInformation;
     private List<Category> storeCategories;
     private List<ServerEvent> serverEvents;
-    public BuyGUI buyGUI;
 
     /**
      * Starts the Bukkit platform.
@@ -83,7 +80,6 @@ public final class TebexPlugin extends JavaPlugin implements Platform {
         queuedPlayers = Maps.newConcurrentMap();
         storeCategories = new ArrayList<>();
         serverEvents = new ArrayList<>();
-        buyGUI = new BuyGUI(this);
 
         placeholderManager.register(new BukkitNamePlaceholder(placeholderManager));
         placeholderManager.register(new UuidPlaceholder(placeholderManager));
@@ -122,7 +118,6 @@ public final class TebexPlugin extends JavaPlugin implements Platform {
             bukkitCommandMap.setAccessible(true);
             CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
 
-            commandMap.register(getPlatformConfig().getBuyCommandName(), new BuyCommand(getPlatformConfig().getBuyCommandName(), this));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException("Failed to get the CommandMap", e);
         }
@@ -230,13 +225,7 @@ public final class TebexPlugin extends JavaPlugin implements Platform {
         return queuedPlayers;
     }
 
-    public BuyGUI getBuyGUI() {
-        return buyGUI;
-    }
 
-    public void setBuyGUI(BuyGUI buyGUI) {
-        this.buyGUI = buyGUI;
-    }
 
     /**
      * Registers the specified listener with the plugin manager.

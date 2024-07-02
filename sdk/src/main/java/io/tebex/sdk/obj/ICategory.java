@@ -9,7 +9,6 @@ public interface ICategory {
 
     String getName();
 
-    String getGuiItem();
 
     List<CategoryPackage> getPackages();
 }
